@@ -1,60 +1,88 @@
-# 系统架构与模块设计
+# System Architecture and Module Design
 
-## 核心理念
+## Core Concepts
 
-### 防幻觉三定律
+### Three Laws of Anti-Hallucination
 
-| 定律 | 说明 | 执行方式 |
+| Law | Explanation | Implementation Method |
+
 |------|------|---------|
-| **大纲即法律** | 遵循大纲，不擅自发挥 | Context Agent 强制加载章节大纲 |
-| **设定即物理** | 遵守设定，不自相矛盾 | Consistency Checker 实时校验 |
-| **发明需识别** | 新实体必须入库管理 | Data Agent 自动提取并消歧 |
 
-### Strand Weave 节奏系统
+| **Outline is the Law** | Follow the outline, do not arbitrarily change it | Context Agent forces loading of chapter outlines |
 
-| Strand | 含义 | 理想占比 | 说明 |
-|--------|------|---------|------|
-| **Quest** | 主线剧情 | 60% | 推动核心冲突 |
-| **Fire** | 感情线 | 20% | 人物关系发展 |
-| **Constellation** | 世界观扩展 | 20% | 背景/势力/设定 |
+| **Settings are Physics** | Abide by the settings, do not contradict yourself | Consistency Checker real-time verification |
 
-节奏红线：
+| **Inventions Must Be Identified** | New entities must be managed in the database | Data Agent automatically extracts and disambiguates |
 
-- Quest 连续不超过 5 章
-- Fire 断档不超过 10 章
-- Constellation 断档不超过 15 章
+### Strand Weave Rhythm System
 
-## 总体架构图
+| Strand | Meaning | Ideal Proportion | Explanation |
+
+|--------|------|----------|------|
+
+| **Quest** | Main Storyline | 60% | Drives the Core Conflict |
+
+| **Fire** | Romance | 20% | Character Relationship Development |
+
+| **Constellation** | Worldview Expansion | 20% | Background/Faction/Setting |
+
+Pace Red Lines:
+
+- Quest: No more than 5 consecutive chapters
+
+- Fire: No more than 10 chapter gaps
+
+- Constellation: No more than 15 chapter gaps
+
+## Overall Architecture Diagram
 
 ```text
-┌─────────────────────────────────────────────────────────────┐
-│                      Claude Code                           │
-├─────────────────────────────────────────────────────────────┤
-│  Skills (7个): init / plan / write / review / query / ... │
-├─────────────────────────────────────────────────────────────┤
-│  Agents (8个): Context / Data / 多维 Checker               │
-├─────────────────────────────────────────────────────────────┤
-│  Data Layer: state.json / index.db / vectors.db            │
-└─────────────────────────────────────────────────────────────┘
+
+┌───────────────────────────────────────────────────────┐
+
+│ Claude Code │
+
+├─────────────────────────────────────────────────────────┤
+
+│ Skills (7): init / plan / write / review / query / ... │
+
+├───────────────────────────────────────────────────────────┤
+
+│ Agents (8): Context / Data / Multidimensional Checker │
+
+├───────────────────────────────────────────────────────┤
+
+│ Data Layer: state.json / index.db / vectors.db │
+
+└───────────────────────────────────────────────────────┘
+
 ```
 
-## 双 Agent 架构
+## Dual Agent Architecture
 
-### Context Agent（读）
+### Context Agent (Read)
 
-职责：在写作前构建“创作任务书”，提供本章上下文、约束和追读力策略。
+Responsibility: Builds the "creation task book" before writing, providing the chapter's context, constraints, and follow-up strategies.
 
-### Data Agent（写）
+### Data Agent (Write)
 
-职责：从正文提取实体与状态变化，更新 `state.json`、`index.db`、`vectors.db`，保证数据链闭环。
+Responsibility: Extracts entities and state changes from the main text, updates `state.json`, `index.db`, ​​and `vectors.db`, ​​ensuring a closed data chain.
 
-## 六维并行审查
 
-| Checker | 检查重点 |
+## Six-Dimensional Parallel Review
+
+| Checker | Key Check Points |
+
 |---------|---------|
-| High-point Checker | 爽点密度与质量 |
-| Consistency Checker | 设定一致性（战力/地点/时间线） |
-| Pacing Checker | Strand 比例与断档 |
-| OOC Checker | 人物行为是否偏离人设 |
-| Continuity Checker | 场景与叙事连贯性 |
-| Reader-pull Checker | 钩子强度、期待管理、追读力 |
+
+| High-point Checker | Highlights and Quality |
+
+| Consistency Checker | Consistency of Setting (Power/Location/Timeline) |
+
+| Pacing Checker | Strand Ratio and Gaps |
+
+| OOC Checker | Does Character Behavior Deviate from Character Design? |
+
+| Continuity Checker | Scene and Narrative Coherence |
+
+| Reader-pull Checker | Hook Strength, Expectation Management, Reading Comprehension |
