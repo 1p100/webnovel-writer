@@ -1,35 +1,41 @@
-# 文档中心
+# Documentation Center
 
-本目录承载 `README.md` 之外的详细说明，按模块拆分：
+This directory contains detailed explanations beyond `README.md`, broken down by module:
 
-- [架构与模块](#架构与模块)
-- [命令详解](#命令详解)
-- [RAG 与配置](#rag-与配置)
-- [题材模板](#题材模板)
-- [运维与恢复](#运维与恢复)
+- [Architecture and Modules](#Architecture and Modules)
 
-## 架构与模块
+- [Command Explanation](#Command Explanation)
 
-- `architecture.md`：系统架构、核心理念、双 Agent、六维审查
+- [RAG and Configuration](#rag-and-config)
 
-## 命令详解
+- [Theme Templates](#Theme Templates)
 
-- `commands.md`：`/webnovel-*` 命令详细说明
+- [Operations and Recovery](#Operations and Recovery)
 
-## RAG 与配置
+## Architecture and Modules
 
-- `rag-and-config.md`：RAG 检索与环境配置
+- `architecture.md`: System architecture, core concepts, dual agents, six-dimensional review
 
-## 题材模板
+## Command Explanation
 
-- `genres.md`：题材模板与复合题材规则
+- `commands.md`: Detailed explanation of `/webnovel-*` commands
 
-## 运维与恢复
+## RAG and Configuration
 
-- `operations.md`：项目结构与故障恢复/运维手册
+- `rag-and-config.md`: RAG retrieval and environment configuration
 
-建议阅读顺序：
+## Theme Templates
 
-1. 先看 `../README.md`（安装与上手）
-2. 再看 `architecture.md`（理解系统设计）
-3. 最后按需查阅命令和运维文档
+- `genres.md`: Theme templates and compound theme rules
+
+## Operations and Recovery
+
+- `operations.md`: Project Structure and Fault Recovery/Operations Manual
+
+Suggested Reading Order:
+
+1. First, read `../README.md` (Installation and Getting Started)
+
+2. Then, read `architecture.md` (Understanding System Design)
+
+3. Finally, consult commands and operations documentation as needed.
